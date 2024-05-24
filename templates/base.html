@@ -63,6 +63,11 @@
             text-align: left;
         }
         
+        .typing-indicator {
+            font-style: italic;
+            color: #999;
+        }
+        
     </style>
 </head>
   <body>
@@ -119,10 +124,14 @@
             appendMessage('user', message);
             userInput.value = '';
         
-            // Simulating bot response
+            // Show typing indicator
+            showTypingIndicator();
+        
+            // Simulating bot response with a delay
             setTimeout(() => {
-                appendMessage('bot', 'This is a simulated response.');
-            }, 1000);
+                removeTypingIndicator();
+                typeMessage('bot', 'This is a simulated response.');
+            }, 2000);
         }
         
         function appendMessage(sender, message) {
@@ -135,6 +144,41 @@
             chatBody.scrollTop = chatBody.scrollHeight;
         }
         
+        function showTypingIndicator() {
+            const chatBody = document.getElementById('chat-body');
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'message bot typing-indicator';
+            typingIndicator.innerText = 'PromptSafe is thinking...';
+        
+            chatBody.appendChild(typingIndicator);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+        
+        function removeTypingIndicator() {
+            const typingIndicator = document.querySelector('.typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+        
+        function typeMessage(sender, message) {
+            const chatBody = document.getElementById('chat-body');
+            const messageElement = document.createElement('div');
+            messageElement.className = `message ${sender}`;
+            chatBody.appendChild(messageElement);
+        
+            let index = 0;
+            function type() {
+                if (index < message.length) {
+                    messageElement.innerHTML += message.charAt(index) === ' ' ? '&nbsp;' : message.charAt(index);
+                    index++;
+                    setTimeout(type, 50);  // Adjust typing speed here
+                }
+            }
+        
+            type();
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }        
       </script>
   
     </body>
