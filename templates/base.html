@@ -28,7 +28,7 @@
         }
         
         .chat-header {
-            {% comment %} background-color: #007bff; {% endcomment %}
+            background-color: #007bff;
             color: #fff;
             padding: 15px;
             text-align: center;
@@ -38,12 +38,13 @@
             flex: 1;
             padding: 15px;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
         }
         
         .chat-footer {
             display: flex;
             padding: 15px;
-            {% comment %} border-top: 1px solid #ddd; {% endcomment %}
         }
         
         .chat-footer input {
@@ -52,22 +53,37 @@
         }
         
         .message {
-            margin-bottom: 15px;
+            max-width: 80%;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-radius: 20px;
+            position: relative;
+            word-wrap: break-word;
         }
         
         .message.user {
-            text-align: right;
+            align-self: flex-end;
+            background-color: #007bff;
+            color: #fff;
+            border-bottom-right-radius: 0;
         }
         
         .message.bot {
-            text-align: left;
+            align-self: flex-start;
+            background-color: #f1f0f0;
+            color: #333;
+            border-bottom-left-radius: 0;
         }
         
         .typing-indicator {
             font-style: italic;
             color: #999;
+            align-self: flex-start;
+            background-color: #f1f0f0;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border-bottom-left-radius: 0;
         }
-        
     </style>
 </head>
   <body>
@@ -127,10 +143,19 @@
             // Show typing indicator
             showTypingIndicator();
         
-            // Simulating bot response with a delay
+            // Simulating API call with delay
             setTimeout(() => {
-                removeTypingIndicator();
-                typeMessage('bot', 'This is a simulated response.');
+                fetch('https://mocki.io/v1/059744ee-e553-4bf0-875a-47c96424bebd')
+                    .then(response => response.json())
+                    .then(data => {
+                        removeTypingIndicator();
+                        typeMessage('bot', data.body);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching API:', error);
+                        removeTypingIndicator();
+                        typeMessage('bot', 'Sorry, there was an error processing your request.');
+                    });
             }, 2000);
         }
         
