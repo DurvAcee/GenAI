@@ -143,7 +143,8 @@
         }
 
         function fetchInitialMessage() {
-            fetch('https://mocki.io/v1/ad9c060a-dd91-427f-b47c-99706b866d88')
+            // API Call to -> /localbot/welcome
+            fetch('/localbot/welcome/')
                 .then(response => response.json())
                 .then(data => {
                     removeTypingIndicator();
@@ -168,8 +169,8 @@
             appendMessage('user', message);
             userInput.value = '';
             showTypingIndicator();
-            setTimeout(() => {
-                fetch('https://mocki.io/v1/059744ee-e553-4bf0-875a-47c96424bebd')
+            {% comment %} setTimeout(() => {
+                fetch('https://mocki.io/v1/059744ee-e553-4bf0-875a-47c96424bebd') 
                     .then(response => response.json())
                     .then(data => {
                         console.log('here');
@@ -181,6 +182,32 @@
                         removeTypingIndicator();
                         typeMessage('bot', 'Sorry, there was an error processing your request.');
                     });
+            }, 2000); {% endcomment %}
+
+            
+            // /localbot/prompt
+            setTimeout(() => {
+                fetch('https://mocki.io/v1/93a0821a-c725-43e1-8037-711ce92b1db3', { 
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_session_id: chatSessionId,
+                        message: message
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    removeTypingIndicator();
+                    const decodedMessage = decodeURIComponent(data.message); 
+                    typeMessage('bot', decodedMessage);
+                })
+                .catch(error => {
+                    console.error('Error fetching API:', error);
+                    removeTypingIndicator();
+                    typeMessage('bot', 'Sorry, there was an error processing your request.');
+                });
             }, 2000);
         }
         
