@@ -5,15 +5,18 @@
 
 <div class="container">
     <div class="chat-container">
-        <div class="chat-header bg-primary text-white">
+        <div class="chat-header text-white">
             <h3>How can I help you today?</h3>
         </div>
         <div class="chat-body" id="chat-body">
         </div>
         <div class="chat-footer">
-            <input type="text" id="userInput" class="form-control" placeholder="Message PromptSafe..." onkeypress="return enterKeyPress(event)">
-            <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+            <input type="text" id="userInput" class="form-control" placeholder="Message Alta Co-Pilot..." onkeypress="return enterKeyPress(event)">
+            <button id="sendButton" onclick="sendMessage()" class="send-button" data-toggle="tooltip" data-placement="top" title="Send message" disabled>
+                <i class="fas fa-arrow-up mx-1 arrow"></i> 
+            </button>          
         </div>
+        <p class = "text-center warning-msg"> Alta Co-Pilot can make mistakes. Check important info.</p>  
     </div>
 </div>
 

@@ -1,0 +1,33 @@
+API Endpoint -> /localbot/welcome
+API URL -> https://mocki.io/v1/ad9c060a-dd91-427f-b47c-99706b866d88
+API Response ->
+
+{
+  "message": "Hello from assistant!!",
+  "previous_chats": "[{\"chat_session_id\": \"751d3457-b7a3-48a5-9385-d2aaada1b2f4\", \"name\": \"hi\"}, {\"chat_session_id\": \"20543d98-2ce8-4989-a03e-12a1240b7f57\", \"name\": \"\"}, {\"chat_session_id\": \"59dbb2f6-b4d6-474b-9ba5-ab96a46b9764\", \"name\": \"\"}, {\"chat_session_id\": \"2336ec36-07e4-45c8-9dda-278cf802c955\", \"name\": \"\"}, {\"chat_session_id\": \"9832ac9e-39c8-4193-a3a5-97f8d8eb0f86\", \"name\": \"\"}, {\"chat_session_id\": \"e2847548-d161-4192-b74a-b7b85e2fcc86\", \"name\": \"\"}, {\"chat_session_id\": \"458fd69f-1dd6-4404-a09f-f95a6d1a2489\", \"name\": \"\"}, {\"chat_session_id\": \"b907d754-c340-4065-854a-b3083f1ace38\", \"name\": \"\"}, {\"chat_session_id\": \"17b8a099-cc14-4625-b690-874177119648\", \"name\": \"\"}, {\"chat_session_id\": \"ade224b7-a960-4fea-90a9-0a20219204eb\", \"name\": \"\"}, {\"chat_session_id\": \"63ebc00c-27cf-441a-b927-d54795be2f6d\", \"name\": \"\"}, {\"chat_session_id\": \"ae6aa210-2dda-4367-ba39-fe8be9968f74\", \"name\": \"\"}, {\"chat_session_id\": \"ad11d53a-0ab6-4e35-9064-c1c3518c29a4\", \"name\": \"\"}]",
+  "type": "welcome",
+  "chat_session_id": "3e902450-1e0d-4a88-a703-d56965627c7c"
+}
+
+API Endpoint -> /localbot/prompt
+API URL -> https://mocki.io/v1/93a0821a-c725-43e1-8037-711ce92b1db3 
+API Response ->
+
+{
+    "user_query": "hello tanaji this side",
+    "message": "Hello%20Tanaji%2C%20I%20am%20an%20AI%20Assistant%20here%20to%20assist%20you%20with%20inquiries%20about%20Alta%20View%2C%20Alta%20Data%20Protection%2C%20Alta%20Reports%2C%20and%20NetBackup.%20How%20can%20I%20assist%20you%20today%3F",
+    "type": "unknown",
+    "status": "done",
+    "status_message": "SUCCESS",
+    "sender": "fred",
+    "sources": null,
+    "additional_sources": null,
+    "user_id": "",
+    "user_session_id": "alta-peach-us@mail.com@org_eGnnZ5mRTuaWmte9",
+    "chat_session_id": "3e902450-1e0d-4a88-a703-d56965627c7c",
+    "form_data": [],
+    "cid": "077F338F7C7142938A20F4971906F1F0139358418270570000",
+    "parent_message_uuid": null,
+    "child_message_uuid": null,
+    "timestamp": 1716549029542
+}
